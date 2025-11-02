@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Ecommerce Site</title>
+    <title>Urban Carry</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
         <div class="container header-content">
-            <a href="#" class="logo">Shoply<span>.</span></a>
+            <a href="#" class="logo">Urban Carry<span>.</span></a>
 
             <nav class="nav">
                 <a href="#" class="active">Home</a>
@@ -18,7 +18,10 @@
             </nav>
 
             <div class="icons">
-                <button class="search">🔍</button>
+                <div class="search-box">
+                    <button class="search" id="search-btn">🔍</button>
+                    <input type="text" id="search-input" placeholder="Search products..." />
+                </div>
                 <button class="cart">🛒 <span id="cart-count">0</span></button>
             </div>
         </div>
@@ -33,7 +36,7 @@
                 <a href="#products" class="btn">Shop Now</a>
             </div>
             <div class="image">
-                <img src="./Assets/hero.jpg" alt="Shop items" />
+                <img src="./Assets/hero.webp" alt="Shop items" />
             </div>
         </div>
     </section>
@@ -43,10 +46,27 @@
         <div id="product-grid" class="grid"></div>
     </section>
 
-    <section id="about" class="about container">
-        <h2>About</h2>
-        <p>Shoply is a modern men’s bag brand focused on quality craftsmanship and timeless design. Every bag is created with attention to detail — combining durability, comfort, and contemporary aesthetics for your daily adventures.</p>
-    </section>
+    <section id="about" class="about-section container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>
+                    At <strong>UrbanCarry</strong>, we design premium-quality bags built for 
+                    everyday explorers. Our collection blends sleek design, comfort, and 
+                    functionality — made for those who live life on the move.
+                </p>
+                <p>
+                    Whether it’s a workday hustle or a weekend escape, our bags are crafted 
+                    to fit your lifestyle with style and durability that lasts.
+                </p>
+                <button class="learn-more">Learn More</button>
+            </div>
+            <div class="about-image">
+                <img src="./Assets/about.webp" alt="Men's bag collection" />
+            </div>
+        </div>
+</section>
+
 
     <aside class="cart-panel" id="cart-panel">
         <button id="close-cart" class="close">✕</button>
@@ -61,8 +81,8 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col about">
-                <h3>About Shoply</h3>
-                <p>At Shoply, we believe style should be effortless. Our collection of premium men's bags is designed for modern professionals — durable, minimal, and built to last.</p>
+                <h3>About Urban Carry</h3>
+                <p>At UrbanCarry, we believe style should be effortless. Our collection of premium men's bags is designed for modern professionals — durable, minimal, and built to last.</p>
             </div>
 
             <div class="footer-col links">
@@ -98,7 +118,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© <span id="year"></span> Shoply — Crafted for the Modern Gen</p>
+            <p>© <span id="year"></span> Urban Carry — Crafted for the Modern Gen</p>
         </div>
 </footer>
 
