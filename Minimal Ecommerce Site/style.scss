@@ -24,12 +24,62 @@ body {
     margin: auto;
 }
 
+// .header {
+//     position: sticky;
+//     top: 0;
+//     background: $white;
+//     box-shadow: $shadow;
+//     z-index: 10;
+
+//     .header-content {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         padding: 1rem 0;
+
+//         .logo {
+//             font-weight: 700;
+//             color: $brand;
+//             text-decoration: none;
+//             font-size: 1.4rem;
+//         }
+
+//         .nav {
+//             display: flex;
+//             gap: 1rem;
+
+//             a {
+//                 text-decoration: none;
+//                 color: $text;
+//                 font-weight: 600;
+//                 &:hover {
+//                     color: $brand;
+//                 }
+//             }
+//         }
+
+//         .icons {
+//             display: flex;
+//             gap: 0.5rem;
+//             button {
+//                 background: none;
+//                 border: none;
+//                 font-size: 1.1rem;
+//                 cursor: pointer;
+//             }
+//         }
+//     }
+// }
+
+
 .header {
     position: sticky;
     top: 0;
-    background: $white;
-    box-shadow: $shadow;
-    z-index: 10;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 
     .header-content {
         display: flex;
@@ -39,37 +89,83 @@ body {
 
         .logo {
             font-weight: 700;
-            color: $brand;
+            font-size: 1.6rem;
+            color: $text;
             text-decoration: none;
-            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            transition: 0.3s ease;
+
+            span {
+                color: $brand;
+            }
+
+            &:hover {
+                transform: scale(1.05);
+            }
         }
 
         .nav {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
 
             a {
+                position: relative;
                 text-decoration: none;
+                font-weight: 500;
                 color: $text;
-                font-weight: 600;
+                transition: 0.3s ease;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background: $brand;
+                    transition: width 0.3s ease;
+                }
+
                 &:hover {
                     color: $brand;
+                }
+
+                &:hover::after,
+                &.active::after {
+                    width: 100%;
                 }
             }
         }
 
         .icons {
             display: flex;
-            gap: 0.5rem;
+            gap: 1rem;
+
             button {
-                background: none;
+                background: rgba(255, 255, 255, 0.4);
                 border: none;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 font-size: 1.1rem;
                 cursor: pointer;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                transition: 0.3s ease;
+
+                &:hover {
+                    background: $brand;
+                    color: $white;
+                    transform: translateY(-2px);
+                }
             }
         }
     }
 }
+
+
 
 .hero {
     padding: 3rem 0;
