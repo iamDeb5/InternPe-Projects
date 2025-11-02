@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Ecommerce Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo">Shoply</a>
+            <nav class="nav">
+                <a href="#">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="icons">
+                <button class="search">🔍</button>
+                <button class="cart">🛒 <span id="cart-count">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="text">
+                <h1>Modern Products, Honest Prices</h1>
+                <p>Discover trendy and affordable items. Built using HTML, SCSS & JS.</p>
+                <a href="#products" class="btn">Shop Now</a>
+            </div>
+            <div class="image">
+                <img src="./Assets/hero.jpg" alt="Shop items" />
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products container">
+        <h2>Featured Products</h2>
+        <div id="product-grid" class="grid"></div>
+    </section>
+
+    <section id="about" class="about container">
+        <h2>About</h2>
+        <p>This website is built as an InternPe task using clean code structure with HTML, SCSS, and JavaScript. It features responsive design and a simple cart system.</p>
+    </section>
+
+    <aside class="cart-panel" id="cart-panel">
+        <button id="close-cart" class="close">✕</button>
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total">Total: ₹<span id="cart-total">0.00</span></div>
+            <button class="btn checkout">Checkout</button>
+        </div>
+    </aside>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© <span id="year"></span> Shoply — Created for InternPe Task</p>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
