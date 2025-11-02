@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = [
         { id: 1, name: "Military Style", price: 2499, img: "./Assets/1.webp" },
         { id: 2, name: "Olive Green BagPack", price: 4999, img: "./Assets/2.webp" },
-        { id: 3, name: "Vintage Leather", price: 1299, img: "./Assets/3.webp" },
+        // { id: 3, name: "Vintage Leather", price: 1299, img: "./Assets/3.webp" },
         { id: 4, name: "Urban Edge BagPack", price: 699, img: "./Assets/4.webp" },
         { id: 5, name: "Vintage Leather", price: 399, img: "./Assets/5.webp" },
         { id: 6, name: "Glitter Glam Bag", price: 799, img: "./Assets/6.webp" },
