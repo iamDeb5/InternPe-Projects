@@ -24,61 +24,14 @@ body {
     margin: auto;
 }
 
-// .header {
-//     position: sticky;
-//     top: 0;
-//     background: $white;
-//     box-shadow: $shadow;
-//     z-index: 10;
-
-//     .header-content {
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-between;
-//         padding: 1rem 0;
-
-//         .logo {
-//             font-weight: 700;
-//             color: $brand;
-//             text-decoration: none;
-//             font-size: 1.4rem;
-//         }
-
-//         .nav {
-//             display: flex;
-//             gap: 1rem;
-
-//             a {
-//                 text-decoration: none;
-//                 color: $text;
-//                 font-weight: 600;
-//                 &:hover {
-//                     color: $brand;
-//                 }
-//             }
-//         }
-
-//         .icons {
-//             display: flex;
-//             gap: 0.5rem;
-//             button {
-//                 background: none;
-//                 border: none;
-//                 font-size: 1.1rem;
-//                 cursor: pointer;
-//             }
-//         }
-//     }
-// }
-
-
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.85);
+
     transition: background 0.3s ease, box-shadow 0.3s ease;
 
     .header-content {
@@ -106,36 +59,39 @@ body {
 
         .nav {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
+            align-items: center;
 
             a {
                 position: relative;
                 text-decoration: none;
-                font-weight: 500;
                 color: $text;
-                transition: 0.3s ease;
+                font-weight: 600;
+                transition: color 0.3s ease;
 
                 &::after {
                     content: "";
                     position: absolute;
-                    bottom: -4px;
                     left: 0;
-                    width: 0;
+                    bottom: -4px;
+                    width: 0%;
                     height: 2px;
-                    background: $brand;
+                    background-color: $brand;
                     transition: width 0.3s ease;
+                    border-radius: 2px;
                 }
 
                 &:hover {
                     color: $brand;
-                }
 
-                &:hover::after,
-                &.active::after {
-                    width: 100%;
+                    &::after {
+                        width: 100%;
+                    }
                 }
             }
         }
+
+
 
         .icons {
             display: flex;
@@ -168,6 +124,11 @@ body {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: none;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        a,
+        .logo {
+            color: #111;
+            transition: color 0.3s ease;
+        }
     }
 
 }
