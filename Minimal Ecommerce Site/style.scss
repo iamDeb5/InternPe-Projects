@@ -219,6 +219,17 @@ body {
     }
 }
 
+.products .grid > div {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        filter: brightness(1.05);
+    }
+}
+
+
 .cart-panel {
     position: fixed;
     right: 1rem;
@@ -367,3 +378,99 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+@keyframes fadeInHero {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1,
+.hero p,
+.hero button {
+    opacity: 0;
+    animation: fadeInHero 1s ease forwards;
+}
+
+.hero h1 { animation-delay: 0.3s; }
+.hero p { animation-delay: 0.6s; }
+.hero button { animation-delay: 0.9s; }
+
+
+// navbar fades in
+
+/* --- Navbar fade-in animation --- */
+@keyframes fadeInNavbar {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    opacity: 0;
+    animation: fadeInNavbar 0.6s ease forwards;
+    animation-delay: 0.2s;
+}
+
+//footer  effect
+
+/* --- Footer fade-in animation --- */
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+footer {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+footer.visible {
+    animation: fadeInFooter 1s ease forwards;
+}
+
+
+/* --- Scroll to Top Button --- */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#scrollTopBtn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+    background: #333;
+}
+

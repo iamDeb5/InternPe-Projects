@@ -86,3 +86,33 @@ window.addEventListener("scroll", () => {
 });
 
 
+// --- Footer fade-in on scroll ---
+const footer = document.querySelector("footer");
+
+window.addEventListener("scroll", () => {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (footerTop < windowHeight - 100) {
+        footer.classList.add("visible");
+    }
+});
+
+// --- Scroll to Top Button ---
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add("visible");
+    } else {
+        scrollTopBtn.classList.remove("visible");
+    }
+});
+
+scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
