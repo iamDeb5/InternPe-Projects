@@ -7,26 +7,70 @@
 body {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
   font-family: "Poppins", sans-serif;
-  color: #333;
+  transition: 0.5s ease background, 0.3s ease color;
+  overflow: hidden;
+}
+body.dark-mode {
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #ffffff;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.theme-toggle input {
+  display: none;
+}
+.theme-toggle label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+.theme-toggle label:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(166, 193, 238, 0.4);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 .todo-container {
-  background: #fff;
-  width: 350px;
+  width: 360px;
   padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-.todo-container:hover {
-  transform: translateY(-3px);
+  color: #222;
+  text-align: center;
+  transition: 0.3s ease all;
 }
 .todo-container h2 {
-  text-align: center;
   margin-bottom: 20px;
 }
 .todo-container .input-box {
@@ -36,62 +80,111 @@ body {
 .todo-container .input-box input {
   flex: 1;
   padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  border: none;
+  border-radius: 10px;
   outline: none;
+  background: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
+  transition: 0.3s;
 }
 .todo-container .input-box input:focus {
-  border-color: #2575fc;
+  background: rgb(255, 255, 255);
 }
 .todo-container .input-box button {
-  background: #2575fc;
-  color: #fff;
+  background: #00b4d8;
+  color: #ffffff;
   border: none;
   padding: 10px 15px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 .todo-container .input-box button:hover {
-  background: #6a11cb;
+  background: #0096c7;
+  transform: scale(1.05);
 }
 .todo-container ul {
   margin-top: 20px;
   list-style: none;
 }
 .todo-container ul li {
-  background: #f5f5f5;
+  background: rgba(255, 255, 255, 0.25);
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.3s;
+  transition: background 0.3s ease, transform 0.2s;
+}
+.todo-container ul li:hover {
+  transform: scale(1.02);
 }
 .todo-container ul li.checked {
   text-decoration: line-through;
-  color: gray;
+  opacity: 0.6;
 }
 .todo-container ul li span {
   cursor: pointer;
-  color: crimson;
+  color: #ff4d6d;
+  font-size: 1.2rem;
   transition: transform 0.2s;
 }
 .todo-container ul li span:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 @media (max-width: 480px) {
   .todo-container {
     width: 90%;
-    padding: 20px;
   }
   .input-box {
     flex-direction: column;
   }
-  .input-box input, .input-box button {
+  .input-box input,
+  .input-box button {
     width: 100%;
   }
+}
+body.dark-mode .glass {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .todo-container {
+  color: #ffffff;
+}
+body.dark-mode .todo-container .input-box input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+body.dark-mode .todo-container ul li {
+  background: rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .theme-toggle label {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+body.dark-mode .footer {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.3s ease all;
+}
+.footer strong {
+  color: #0096c7;
+}
+.footer:hover {
+  transform: scale(1.03);
 }/*# sourceMappingURL=style.css.map */

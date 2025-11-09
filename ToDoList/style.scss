@@ -1,10 +1,9 @@
-$bg-gradient: linear-gradient(135deg, #6a11cb, #2575fc);
-$primary: #2575fc;
-$secondary: #6a11cb;
-$white: #fff;
-$text-color: #333;
-$danger: crimson;
-$light-gray: #f5f5f5;
+$light-bg: linear-gradient(135deg, #fbc2eb, #a6c1ee); 
+$dark-bg: linear-gradient(135deg, #141e30, #243b55);
+$primary: #00b4d8;
+$secondary: #0096c7;
+$white: #ffffff;
+$danger: #ff4d6d;
 
 * {
     margin: 0;
@@ -15,27 +14,77 @@ $light-gray: #f5f5f5;
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: $bg-gradient;
+    background: $light-bg;
     font-family: "Poppins", sans-serif;
-    color: $text-color;
+    transition: 0.5s ease background, 0.3s ease color;
+    overflow: hidden;
+
+    &.dark-mode {
+        background: $dark-bg;
+        color: $white;
+    }
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    input {
+        display: none;
+    }
+
+    label {
+        font-size: 1.6rem;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        padding: 8px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    }
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    // box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(166, 193, 238, 0.4);
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .todo-container {
-    background: $white;
-    width: 350px;
+    width: 360px;
     padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: translateY(-3px);
-    }
+    color: #222;
+    text-align: center;
+    transition: 0.3s ease all;
 
     h2 {
-        text-align: center;
         margin-bottom: 20px;
     }
 
@@ -46,13 +95,15 @@ body {
         input {
             flex: 1;
             padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: none;
+            border-radius: 10px;
             outline: none;
+            background: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
+            transition: 0.3s;
 
             &:focus {
-                border-color: $primary;
+                background: rgba(255, 255, 255, 1);
             }
         }
 
@@ -61,12 +112,14 @@ body {
             color: $white;
             border: none;
             padding: 10px 15px;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
 
             &:hover {
                 background: $secondary;
+                transform: scale(1.05);
             }
         }
     }
@@ -76,27 +129,32 @@ body {
         list-style: none;
 
         li {
-            background: $light-gray;
+            background: rgba(255, 255, 255, 0.25);
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s;
+            transition: background 0.3s ease, transform 0.2s;
+
+            &:hover {
+                transform: scale(1.02);
+            }
 
             &.checked {
                 text-decoration: line-through;
-                color: gray;
+                opacity: 0.6;
             }
 
             span {
                 cursor: pointer;
                 color: $danger;
+                font-size: 1.2rem;
                 transition: transform 0.2s;
 
                 &:hover {
-                    transform: scale(1.1);
+                transform: scale(1.2);
                 }
             }
         }
@@ -106,14 +164,65 @@ body {
 @media (max-width: 480px) {
     .todo-container {
         width: 90%;
-        padding: 20px;
     }
 
     .input-box {
         flex-direction: column;
 
-        input, button {
+        input,
+        button {
             width: 100%;
         }
+    }
+}
+
+body.dark-mode {
+    .glass {
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .todo-container {
+        color: $white;
+
+        .input-box input {
+            background: rgba(255, 255, 255, 0.1);
+            color: $white;
+        }
+
+        ul li {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    .theme-toggle label {
+        background: rgba(255, 255, 255, 0.1);
+        color: $white;
+    }
+
+    .footer {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s ease all;
+
+    strong {
+        color: $secondary;
+    }
+
+    &:hover {
+        transform: scale(1.03);
     }
 }
